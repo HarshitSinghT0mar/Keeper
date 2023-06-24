@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-const CreateArea = () => {
+const CreateArea = (props) => {
     const[note, setNote]=useState({title:"",content:""})
-    const[noteData, setNoteData]=useState([])
+   
 
     function inputChange(event){
 const inputTitle=event.target.value;
@@ -15,8 +15,11 @@ function textChange(event){
 
     }
     function addNote(e){
-        e.preventDefault();
-        return setNoteData((prevData)=>{return [...prevData,note]})
+      e.preventDefault();
+        props.onAdd(note);
+       
+        return  setNote({title: "",content:""})
+        
         
     }
   return (
